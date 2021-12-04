@@ -1,0 +1,172 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Login",
+                "operationId": "AuthenticationController.Login",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for user content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{int} responses.NewUserResponse"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    },
+                    "404": {
+                        "description": "body is empty"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Logout",
+                "operationId": "AuthenticationController.Logout",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "access token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/auth/refresh_token": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "RefreshToken",
+                "operationId": "AuthenticationController.RefreshToken",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for RefreshToken content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.RefreshToken"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "responses.NewUserResponse"
+                    },
+                    "401": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/auth/signup": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Signup",
+                "operationId": "AuthenticationController.Signup",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for user content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{int} responses.NewUserResponse"
+                    },
+                    "409": {
+                        "description": "body is empty"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/hello/": {
+            "get": {
+                "tags": [
+                    "hello"
+                ],
+                "description": "Hello",
+                "operationId": "HelloController.Hello",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "requests.RefreshToken": {
+            "title": "RefreshToken",
+            "type": "object",
+            "properties": {
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "requests.User": {
+            "title": "User",
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "auth",
+            "description": "Operations about AuthenticationController\n"
+        },
+        {
+            "name": "hello",
+            "description": "Operations about HelloController\n"
+        }
+    ]
+}
