@@ -10,6 +10,10 @@ bee run -downdoc=true -gendoc=true
 http://127.0.0.1:8080/swagger/
 ```
 
+### リクエスト
+```
+curl -X GET "http://127.0.0.1:8080/v1/hello/" -H  "accept: application/json" -H "Authorization: XXXX" --verbose
+```
 
 ### データベース(mysql)の操作
 ```
